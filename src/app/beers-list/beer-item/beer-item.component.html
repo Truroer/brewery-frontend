@@ -1,3 +1,32 @@
-<p>
-  beer-item works!
-</p>
+<div class="card">
+  <h5 class="card-title text-capitalize text-center my-2">
+    {{ beer.name }}
+  </h5>
+  <div class="card-body">
+    <p class="card-text text-muted text-center">
+      {{ beer.style?.category?.name }}
+    </p>
+  </div>
+  <img
+    [src]="
+      beer.labels?.medium
+        ? beer.labels?.medium
+        : 'https://images.pexels.com/photos/434311/pexels-photo-434311.jpeg?cs=srgb&dl=alcohol-barrel-beer-434311.jpg&fm=jpg'
+    "
+    class="card-img"
+  />
+  <div class="card-footer bg-light text-muted d-flex justify-content-between">
+    <small *ngIf="beer.abv || (beer.style?.abvMin && beer.style.abvMax)"
+      >ABV:
+      {{
+        beer.abv ? beer.abv : beer.style.abvMin + "-" + beer.style.abvMax
+      }}%</small
+    >
+    <small *ngIf="beer.ibu || (beer.style?.ibuMin && beer.style.ibuMax)"
+      >IBU:
+      {{
+        beer.ibu ? beer.ibu : beer.style.ibuMin + "-" + beer.style.ibuMax
+      }}</small
+    >
+  </div>
+</div>
