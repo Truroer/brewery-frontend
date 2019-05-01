@@ -8,9 +8,25 @@
     ></app-beer-item>
     <!-- end of individual beer -->
   </div>
+  <!-- list page navigation -->
   <div class="row justify-content-between">
-    <a class="btn btn-lg btn-warning "> Previous Page</a>
-    <a class="btn btn-lg btn-warning">{{ beers.currentPage }}</a>
-    <a class="btn btn-lg btn-warning"> Next Page</a>
+    <button
+      class="btn btn-lg btn-warning mb-3"
+      type="button"
+      (click)="getBeers(currentPage - 1)"
+      [disabled]="currentPage == 1"
+    >
+      Previous Page
+    </button>
+    <a class="btn btn-lg btn-warning mb-3">{{ currentPage }}</a>
+    <button
+      class="btn btn-lg btn-warning mb-3"
+      type="button"
+      (click)="getBeers(currentPage + 1)"
+      [disabled]="currentPage == beers?.numberOfPages"
+    >
+      Next Page
+    </button>
   </div>
+  <!--end of list page navigation -->
 </div>

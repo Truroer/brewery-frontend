@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
@@ -9,7 +9,10 @@ export class BeerServiceService {
 
   constructor(private http: HttpClient) {}
 
-  getAllBeers() {
-    return this.http.get(this.url);
+  getAllBeers(pageNr) {
+    const headers = new HttpHeaders({
+      pagenr: `${pageNr}`
+    });
+    return this.http.get(this.url, { headers });
   }
 }

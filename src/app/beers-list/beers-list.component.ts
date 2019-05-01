@@ -8,12 +8,18 @@ import { BeerServiceService } from "../beer-service.service";
 })
 export class BeersListComponent implements OnInit {
   beers;
+  currentPage;
   constructor(private service: BeerServiceService) {}
 
-  ngOnInit() {
-    this.service.getAllBeers().subscribe(result => {
+  getBeers(pageNr = 1) {
+    this.service.getAllBeers(pageNr).subscribe(result => {
       this.beers = result;
+      this.currentPage = this.beers.currentPage;
       console.log(result);
     });
+  }
+
+  ngOnInit() {
+    this.getBeers();
   }
 }
