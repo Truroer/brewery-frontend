@@ -12,10 +12,9 @@ export class BeersListComponent implements OnInit {
   constructor(private service: BeerServiceService) {}
 
   getBeers(pageNr = 1) {
-    this.service.getAllBeers(pageNr).subscribe(result => {
-      this.beers = result;
+    this.service.getAllBeers(pageNr).subscribe(response => {
+      this.beers = response;
       this.currentPage = this.beers.currentPage;
-      console.log(result);
     });
   }
 

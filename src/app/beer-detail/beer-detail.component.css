@@ -1,0 +1,5 @@
+.beerdetails {
+  background: url("https://images.pexels.com/photos/459280/pexels-photo-459280.jpeg?cs=srgb&dl=alcohol-background-bar-459280.jpg&fm=jpg")
+    center/cover no-repeat fixed;
+  min-height: 100vh;
+}

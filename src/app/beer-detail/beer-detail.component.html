@@ -1,3 +1,118 @@
-<p>
-  beer-detail works!
-</p>
+<div class="container-fluid ">
+  <div class="row">
+    <!-- beer details text col -->
+    <div
+      class="col-md-4 about-text px-5 d-flex
+      align-items-start justify-content-center"
+    >
+      <!-- this is for centering -->
+      <div class="about-text-center">
+        <!-- title -->
+        <div class="row">
+          <div class="col text-center">
+            <h1 class="display-4 text-uppercase text-dark mb-0">
+              <strong>{{ beerDetails?.data.name }}</strong>
+            </h1>
+            <div class="title-underline bg-warning"></div>
+            <p class="mt-2 text-capitalize text-muted">
+              {{ beerDetails?.data.style?.category.name }}
+            </p>
+          </div>
+        </div>
+        <!-- end of title -->
+        <!-- single item -->
+        <div
+          class="checkbox-item d-flex"
+          *ngIf="
+            beerDetails?.data.abv ||
+            (beerDetails?.data.style?.abvMin && beerDetails?.data.style.abvMax)
+          "
+        >
+          <p class="text-warning lead">
+            ABV:
+            {{
+              beerDetails?.data.abv
+                ? beerDetails?.data.abv
+                : beerDetails?.data.style.abvMin +
+                  "-" +
+                  beerDetails?.data.style.abvMax
+            }}%
+          </p>
+        </div>
+        <!-- end of single item -->
+        <!-- single item -->
+        <div
+          class="checkbox-item d-flex"
+          *ngIf="
+            beerDetails?.data.ibu ||
+            (beerDetails?.data.style?.ibuMin && beerDetails?.data.style.ibuMax)
+          "
+        >
+          <p class="text-warning lead">
+            IBU:
+            {{
+              beerDetails?.data.ibu
+                ? beerDetails?.data.ibu
+                : beerDetails?.data.style.ibuMin +
+                  "-" +
+                  beerDetails?.data.style.ibuMax
+            }}
+          </p>
+        </div>
+        <!-- end of single item -->
+        <!-- single item -->
+        <div class="checkbox-item d-flex">
+          <p class="text-warning lead">
+            This Beer is Organic:
+            {{ beerDetails?.data.isOrganic === "Y" ? "Yes" : "No" }}
+          </p>
+        </div>
+        <!-- single item -->
+        <div class="checkbox-item d-flex">
+          <p class="text-warning lead">
+            Status: {{ beerDetails?.data.status }}
+          </p>
+        </div>
+        <!-- end of single item -->
+        <!-- single item -->
+        <div class="checkbox-item d-flex">
+          <p class="text-warning lead">
+            Year Created: {{ getYear(beerDetails?.data.createDate) }}
+          </p>
+        </div>
+        <!-- end of single item -->
+        <!-- single item Labels-->
+        <div>
+          <img
+            [src]="
+              beerDetails?.data.labels?.large
+                ? beerDetails.data.labels?.large
+                : 'https://images.pexels.com/photos/434311/pexels-photo-434311.jpeg?cs=srgb&dl=alcohol-barrel-beer-434311.jpg&fm=jpg'
+            "
+            class="card-img img-rounded"
+          />
+        </div>
+        <!-- end of single item -->
+        <!-- single item -->
+        <div
+          class="d-flex justify-content-between"
+          *ngIf="beerDetails?.data.glass"
+        >
+          <p class="text-muted text-center">
+            Glassware ID: {{ beerDetails?.data.glass.id }}
+          </p>
+          <p class="text-muted text-center">
+            Glass name: {{ beerDetails?.data.glass.name }}
+          </p>
+          <p class="text-muted text-center">
+            Glass data created:
+            {{ getYear(beerDetails?.data.glass.createDate) }}
+          </p>
+        </div>
+        <!-- end of single item -->
+      </div>
+    </div>
+    <!-- beer image col -->
+    <div class="col-md-8 about-picture beerdetails"></div>
+  </div>
+</div>

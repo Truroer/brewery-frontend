@@ -15,4 +15,10 @@ export class BeerServiceService {
     });
     return this.http.get(this.url, { headers });
   }
+  getBeerDetails(beerID) {
+    const headers = new HttpHeaders({
+      beerid: `${beerID}`
+    });
+    return this.http.get(this.url + "/detailsbyid", { headers });
+  }
 }

@@ -1,20 +1,28 @@
-<div class="card">
+<!-- individual beer item -->
+<a class="card" [routerLink]="['/' + beer.id]">
   <div class="card-body">
+    <!-- title -->
     <h5 class="text-capitalize text-center mb-2 height">
       {{ beer.name }}
     </h5>
+    <!-- end of title -->
+    <!-- label -->
     <img
       [src]="
-        beer.labels?.medium
-          ? beer.labels?.medium
+        beer.labels?.large
+          ? beer.labels?.large
           : 'https://images.pexels.com/photos/434311/pexels-photo-434311.jpeg?cs=srgb&dl=alcohol-barrel-beer-434311.jpg&fm=jpg'
       "
       class="card-img img-rounded"
     />
+    <!-- end of label -->
+    <!-- beer category -->
     <p class="card-text text-muted text-center mt-2">
       {{ beer.style?.category?.name }}
     </p>
+    <!-- end of beer category -->
   </div>
+  <!-- abv and ibu in the footer -->
   <div class="card-footer bg-light text-muted d-flex justify-content-between">
     <small *ngIf="beer.abv || (beer.style?.abvMin && beer.style.abvMax)"
       >ABV:
@@ -29,4 +37,6 @@
       }}</small
     >
   </div>
-</div>
+  <!-- end of abv and ibu in the footer -->
+</a>
+<!-- end of individual beer item -->
